@@ -19,7 +19,6 @@ import java.util.ArrayList;
 /**
  * 权限开启
  *
- * @author maple
  * @time 17/1/5 上午11:00
  */
 public class PermissionFragment extends Fragment {

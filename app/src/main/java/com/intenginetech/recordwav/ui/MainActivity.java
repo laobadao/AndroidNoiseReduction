@@ -20,10 +20,7 @@ import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * @author maple
- * @time 2018/4/8.
- */
+
 public class MainActivity extends FragmentActivity {
     @BindView(R.id.tv_title) TextView mTitle;
     @BindView(R.id.tabhost) FragmentTabHost mTabHost;

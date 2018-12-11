@@ -8,7 +8,6 @@ import java.io.RandomAccessFile;
 /**
  * Wav格式的音频记录器
  *
- * @author maple
  * @time 2018/4/10.
  */
 final class WavRecorder extends BaseDataRecorder {

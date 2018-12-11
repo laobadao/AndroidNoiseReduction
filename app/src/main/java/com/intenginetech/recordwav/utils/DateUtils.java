@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author maple
  * @time 16/5/30 下午3:04
  */
 public class DateUtils {

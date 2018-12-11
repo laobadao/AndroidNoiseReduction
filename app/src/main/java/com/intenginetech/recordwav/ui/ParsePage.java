@@ -28,7 +28,6 @@ import butterknife.ButterKnife;
 /**
  * 获取wav文件的信息
  *
- * @author maple
  * @time 16/5/20 下午6:40
  */
 public class ParsePage extends BaseFragment {

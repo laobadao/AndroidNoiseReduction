@@ -35,7 +35,6 @@ import butterknife.ButterKnife;
 /**
  * wav 原始文件播放
  *
- * @author maple
  * @time 16/5/20 下午6:40
  */
 public class RawPlayPage extends BaseFragment {

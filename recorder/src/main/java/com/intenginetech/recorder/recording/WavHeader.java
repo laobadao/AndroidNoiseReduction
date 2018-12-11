@@ -5,7 +5,6 @@ import android.media.AudioFormat;
 /**
  * A Header to be appended to the end of WavRecorder audio file
  *
- * @author maple
  * @time 2018/4/10.
  */
 final class WavHeader {

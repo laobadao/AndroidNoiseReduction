@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * 文件检索工具类
  *
- * @author maple
  * @time 16/5/23 上午11:25
  */
 public class SearchFileUtils {

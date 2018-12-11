@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author maple
  * @time 16/4/13 下午5:55
  */
 public abstract class AbsAdapter<T> extends BaseAdapter {

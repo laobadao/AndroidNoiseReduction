@@ -12,7 +12,6 @@ import java.io.OutputStream;
  * Basically it just pulls the data from { PullableSource} and transport it to
  * {@link OutputStream}
  *
- * @author maple
  * @time 2018/4/10.
  */
 public interface PullTransport {

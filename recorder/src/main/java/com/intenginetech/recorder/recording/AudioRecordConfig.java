@@ -6,7 +6,6 @@ import android.media.MediaRecorder;
 /**
  * 录音参数配置
  *
- * @author maple
  * @time 2018/4/10.
  */
 public interface AudioRecordConfig {
@@ -34,9 +33,13 @@ public interface AudioRecordConfig {
         private final int audioEncoding;
 
         public Default() {
+            //设置用于录制的音源
             this.audioSource = MediaRecorder.AudioSource.MIC;
+            //设置录制的音频编码比特率
             this.audioEncoding = AudioFormat.ENCODING_PCM_16BIT;
+            // 通道数
             this.channelPositionMask = AudioFormat.CHANNEL_IN_MONO;
+            // 采样率
             this.frequency = 44100;
         }
 

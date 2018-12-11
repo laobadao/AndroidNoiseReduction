@@ -5,7 +5,6 @@ import java.io.File;
 /**
  * Essential APIs for working with MsRecorder.
  *
- * @author maple
  * @time 2018/4/10.
  */
 public final class MsRecorder {

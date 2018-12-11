@@ -6,9 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Chronometer;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.intenginetech.recorder.recording.AudioChunk;
@@ -31,7 +29,6 @@ import butterknife.ButterKnife;
 /**
  * 录制 WavRecorder 界面
  *
- * @author maple
  * @time 16/4/18 下午2:53
  */
 public class RecordPage extends BaseFragment {

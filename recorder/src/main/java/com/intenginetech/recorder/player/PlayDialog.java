@@ -22,7 +22,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author maple
  * @time 2018/4/23.
  */
 public class PlayDialog extends Dialog {

@@ -7,7 +7,6 @@ import java.io.IOException;
 /**
  * wav文件 解析器
  *
- * @author maple
  * @time 2018/2/1 下午4:06
  */
 public class WaveFileReader {

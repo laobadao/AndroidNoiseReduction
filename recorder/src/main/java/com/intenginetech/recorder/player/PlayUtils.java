@@ -3,7 +3,6 @@ package com.intenginetech.recorder.player;
 import android.media.MediaPlayer;
 
 /**
- * @author maple
  * @time 2018/4/8.
  */
 public class PlayUtils {

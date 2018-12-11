@@ -13,7 +13,6 @@ import java.util.concurrent.Executors;
 /**
  * Base Recorder (Only record the original audio data.)
  *
- * @author maple
  * @time 2018/4/10.
  */
 public class BaseDataRecorder implements Recorder {

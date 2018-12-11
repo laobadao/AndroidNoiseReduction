@@ -1,15 +1,10 @@
 package com.intenginetech.recordwav.ui;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.intenginetech.recorder.player.PlayDialog;
@@ -34,7 +29,6 @@ import butterknife.ButterKnife;
 /**
  * wav 降噪后文件播放
  *
- * @author maple
  * @time 16/5/20 下午6:40
  */
 public class ReductionPalyPage extends BaseFragment {
