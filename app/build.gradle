@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def nativeBuildSystem = 'cmake'
+def cpuType = 'armeabi-v7a'
+
 android {
     compileSdkVersion 27
     buildToolsVersion "28.0.2"
@@ -10,7 +13,31 @@ android {
         targetSdkVersion 27
         versionCode 10
         versionName "1.0.1"
+        ndk {
+            abiFilters "${cpuType}"
+        }
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_TOOLCHAIN=gcc', '-DANDROID_STL=gnustl_static'
+            }
+        }
     }
+
+    externalNativeBuild {
+//        cmake {
+//            path './jni/CMakeLists.txt'
+//        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,9 +51,8 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'ch.acra:acra:4.9.2'
-
     implementation project(':recorder')
-
+    implementation 'org.tensorflow:tensorflow-android:+'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

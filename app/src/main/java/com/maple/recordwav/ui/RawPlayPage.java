@@ -16,6 +16,7 @@ import com.maple.recorder.player.PlayDialog;
 import com.maple.recorder.player.PlayUtils;
 import com.maple.recordwav.R;
 import com.maple.recordwav.WavApp;
+import com.maple.recordwav.base.AbsAdapter;
 import com.maple.recordwav.base.BaseFragment;
 import com.maple.recordwav.utils.LoadingDialog;
 import com.maple.recordwav.utils.SearchFileUtils;
@@ -36,7 +37,7 @@ import butterknife.ButterKnife;
  */
 public class RawPlayPage extends BaseFragment {
     public static final int SEARCH_MESSAGE_CODE = 200;
-
+//    public AbsAdapter absAdapter;
     @BindView(R.id.tv_des) TextView tv_des;
     @BindView(R.id.lv_wav) ListView lv_wav;
 
@@ -78,6 +79,7 @@ public class RawPlayPage extends BaseFragment {
         adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, wavFileList);
         lv_wav.setAdapter(adapter);
 
+
         new Thread(searchSong).start();
         loadingDialog.show("搜索中...");
     }
@@ -92,10 +94,30 @@ public class RawPlayPage extends BaseFragment {
                 if (file.exists()) {
                     dialogPlay(file);
                 } else {
-                    T.showShort(mContext, "选择的文件不存在");
+                    T.showShort(mContext, "选择的文件不存在!");
                 }
             }
         });
+
+        lv_wav.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String filePath = wavFileList.get(i);
+                File file = new File(filePath);
+                if (file.exists()) {
+                    boolean is_deleted = file.delete();
+                    if (is_deleted){
+                        adapter.notifyDataSetChanged();
+                        T.showShort(mContext, "已删除该文件");
+                    }
+                } else {
+                    T.showShort(mContext, "选择的文件不存在.");
+                }
+
+                return false;
+            }
+        });
+
     }
 
 

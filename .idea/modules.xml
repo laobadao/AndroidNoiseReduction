@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RecordWav.iml" filepath="$PROJECT_DIR$/RecordWav.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidNoiseReduction.iml" filepath="$PROJECT_DIR$/AndroidNoiseReduction.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/recorder/recorder.iml" filepath="$PROJECT_DIR$/recorder/recorder.iml" />
     </modules>

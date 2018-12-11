@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#abcdef"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="WAV 播放" />
+        android:padding="10dp"/>
 
 
     <ListView
