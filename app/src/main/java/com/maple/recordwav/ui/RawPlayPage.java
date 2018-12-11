@@ -5,22 +5,25 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.maple.recorder.player.PlayDialog;
 import com.maple.recorder.player.PlayUtils;
 import com.maple.recordwav.R;
 import com.maple.recordwav.WavApp;
-import com.maple.recordwav.base.AbsAdapter;
 import com.maple.recordwav.base.BaseFragment;
 import com.maple.recordwav.utils.LoadingDialog;
 import com.maple.recordwav.utils.SearchFileUtils;
 import com.maple.recordwav.utils.T;
+import com.maple.recordwav.view.ItemRemoveRecyclerView;
+import com.maple.recordwav.view.MyAdapter;
+import com.maple.recordwav.view.OnItemClickListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,12 +40,12 @@ import butterknife.ButterKnife;
  */
 public class RawPlayPage extends BaseFragment {
     public static final int SEARCH_MESSAGE_CODE = 200;
-//    public AbsAdapter absAdapter;
     @BindView(R.id.tv_des) TextView tv_des;
-    @BindView(R.id.lv_wav) ListView lv_wav;
+    @BindView(R.id.lv_wav)
+    ItemRemoveRecyclerView rv_wav;
 
-    ArrayAdapter<String> adapter;
-    private List<String> wavFileList;
+    MyAdapter adapter;
+    private ArrayList<String> wavFileList;
     private LoadingDialog loadingDialog;
     PlayUtils playUtils;
 
@@ -69,16 +72,16 @@ public class RawPlayPage extends BaseFragment {
         ButterKnife.bind(this, view);
 
         loadingDialog = new LoadingDialog(getActivity());
-        tv_des.setText("WAV 播放界面！");
         return view;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
         wavFileList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, wavFileList);
-        lv_wav.setAdapter(adapter);
 
+        adapter = new MyAdapter(mContext, wavFileList);
+        rv_wav.setLayoutManager(new LinearLayoutManager(mContext));
+        rv_wav.setAdapter(adapter);
 
         new Thread(searchSong).start();
         loadingDialog.show("搜索中...");
@@ -86,9 +89,11 @@ public class RawPlayPage extends BaseFragment {
 
     @Override
     public void initListener() {
-        lv_wav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        rv_wav.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(View view, int position) {
+
                 String filePath = wavFileList.get(position);
                 File file = new File(filePath);
                 if (file.exists()) {
@@ -96,28 +101,14 @@ public class RawPlayPage extends BaseFragment {
                 } else {
                     T.showShort(mContext, "选择的文件不存在!");
                 }
-            }
-        });
 
-        lv_wav.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            }
+
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String filePath = wavFileList.get(i);
-                File file = new File(filePath);
-                if (file.exists()) {
-                    boolean is_deleted = file.delete();
-                    if (is_deleted){
-                        adapter.notifyDataSetChanged();
-                        T.showShort(mContext, "已删除该文件");
-                    }
-                } else {
-                    T.showShort(mContext, "选择的文件不存在.");
-                }
-
-                return false;
+            public void onDeleteClick(int position) {
+                adapter.removeItem(position);
             }
         });
-
     }
 
 
@@ -133,46 +124,11 @@ public class RawPlayPage extends BaseFragment {
         }
     };
 
-    // 系统播放
-    private void systemPlay(File file) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file), "audio/MP3");
-        startActivity(intent);
-    }
 
     private void dialogPlay(File file) {
         new PlayDialog(getActivity())
                 .addWavFile(file)
                 .showDialog();
-    }
-
-    private void uitlsPlay(File file) {
-        if (playUtils == null) {
-            playUtils = new PlayUtils();
-            playUtils.setPlayStateChangeListener(new PlayUtils.PlayStateChangeListener() {
-
-                @Override
-                public void onPlayStateChange(boolean isPlay) {
-                    if (isPlay) {
-                        // startTimer
-//                    com_voice_time.setBase(SystemClock.elapsedRealtime());
-//                    com_voice_time.start();
-//                    bt_preview.setText(getResources().getString(R.string.stop));
-//                    iv_voice_img.setImageResource(R.drawable.mic_selected);
-                    } else {
-//                    com_voice_time.stop();
-//                    com_voice_time.setBase(SystemClock.elapsedRealtime());
-//                    bt_preview.setText(getResources().getString(R.string.preview));
-//                    iv_voice_img.setImageResource(R.drawable.mic_default);
-                    }
-                }
-            });
-        }
-        if (playUtils.isPlaying()) {
-            playUtils.stopPlaying();
-        } else {
-            playUtils.startPlaying(file.getPath());
-        }
     }
 
 

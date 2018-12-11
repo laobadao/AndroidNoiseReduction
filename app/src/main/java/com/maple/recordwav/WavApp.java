@@ -25,6 +25,7 @@ public class WavApp extends Application {
     private static WavApp app;
 
     public static String rootPath = "/wav_file/";
+    public static String reductionPath = "/reduction_file/";
 
     @Override
     public void onCreate() {
@@ -46,10 +47,15 @@ public class WavApp extends Application {
             Log.e("app", "系统方法：" + ROOT);
         }
         rootPath = ROOT + rootPath;
-
+        reductionPath = ROOT + reductionPath;
         File lrcFile = new File(rootPath);
         if (!lrcFile.exists()) {
             lrcFile.mkdirs();
+        }
+
+        File reductionPathFile = new File(reductionPath);
+        if (!reductionPathFile.exists()) {
+            reductionPathFile.mkdirs();
         }
     }
 
