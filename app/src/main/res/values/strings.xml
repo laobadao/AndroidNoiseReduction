@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">语音降噪</string>
+
+    <string-array name="tab_fun_array">
+        <item>录制音频</item>
+        <item>原始播放</item>
+        <item>降噪播放</item>
+    </string-array>
+
+    <string name="record">开始</string>
+    <string name="pause">暂停</string>
+    <string name="resume">继续</string>
+    <string name="stop">停止</string>
+    <string name="preview">播放</string>
+    <string name="reduction">降噪</string>
+
+
+    <string name="crash_toast_text">Ooooops ! I crashed, but a report has been sent to my developer to help fix the issue !</string>
+    <string name="crash_dialog_title">CrashTest has crashed</string>
+    <string name="crash_dialog_text">An unexpected error occurred forcing the
+    application to stop. Please help us fix this by sending us error data,
+    all you have to do is click OK.</string>
+    <string name="crash_dialog_comment_prompt">You might add your comments about the problem below:</string>
+    <string name="crash_dialog_ok_toast">Thank you !</string>
+
+</resources>
